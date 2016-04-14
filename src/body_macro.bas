@@ -1,7 +1,9 @@
 Sub BodyMacro()
+' Khalid Alzuhair
 ' This is a Macro that edits the body part of a report
 ' BodyMacro Macro
-'
+' This macro sets the margins to be 0.75", 1", 0.63", and 0.63", the references to be Chicago,
+' the spacing to be 0, 0, 0, 6, and formats the text to be two columns each with 3.5" of width
 '
     With Selection.PageSetup
         .LineNumbering.Active = False
@@ -30,20 +32,25 @@ Sub BodyMacro()
         .GutterPos = wdGutterPosLeft
         .SectionDirection = wdSectionDirectionLtr
     End With
+    
     If ActiveWindow.View.SplitSpecial <> wdPaneNone Then
         ActiveWindow.Panes(2).Close
     End If
+    
     If ActiveWindow.ActivePane.View.Type <> wdPrintView Then
         ActiveWindow.ActivePane.View.Type = wdPrintView
     End If
+    
     With Selection.PageSetup.TextColumns
         .SetCount NumColumns:=1
         .EvenlySpaced = False
         .LineBetween = False
         .FlowDirection = wdFlowLtr
     End With
+    
     Selection.PageSetup.TextColumns.Add Width:=InchesToPoints(3.5), Spacing:= _
         InchesToPoints(0.25), EvenlySpaced:=False
+        
     With Selection.ParagraphFormat
         .LeftIndent = InchesToPoints(0)
         .RightIndent = InchesToPoints(0)
@@ -68,6 +75,8 @@ Sub BodyMacro()
         .CollapsedByDefault = False
         .ReadingOrder = wdReadingOrderLtr
     End With
+    
     Selection.Font.Name = "Times New Roman"
     Selection.ParagraphFormat.Alignment = wdAlignParagraphJustify
+    
 End Sub
