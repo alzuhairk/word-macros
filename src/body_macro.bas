@@ -1,5 +1,5 @@
 Sub BodyMacro()
-'
+' This is a Macro that edits the body part of a report
 ' BodyMacro Macro
 '
 '
